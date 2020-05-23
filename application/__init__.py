@@ -9,6 +9,5 @@ static_folder = os.path.abspath("application/view/static")
 app = Flask(__name__, template_folder=template_folder, static_folder=static_folder)
 
 
-@app.route("/")
-def home():
-    return "<h1> hello world </h1>"
+
+from application.controller import home_controller
