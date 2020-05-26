@@ -4,10 +4,7 @@
     font-size: 60px;
     text-align: center;
     color: red;
-    
-
 }
-
 
 #sub_titulo {
     font-size: 30px;
@@ -15,27 +12,23 @@
     color: green;
 }
 
-
 #texto_home {
     font-size: 15px;
     text-align: center;
-    color:blue;
+    color: blue;
 }
 
-
 #categoria {
-
     font-size: 30px;
     color: red;
 }
 
-
 ul {
-
     margin: 0;
     list-style: none;
     width: 500px;
 }
+
 
 /* ESTILO AMBIGUO, VALE PARA AS 2 PAGINAS */
 
@@ -44,11 +37,11 @@ ul {
 }
 
 #cat:hover {
-
-    text-decoration:none;
+    text-decoration: none;
     font-weight: bold;
     color: black;
 }
+
 
 /* AQUI TERMINA ELE */
 
@@ -56,10 +49,8 @@ ul {
 /* ESTILOS PAGINA CATEGORIAS */
 
 #pagina_categoria {
-
     font-size: 30px;
     color: red;
-
 }
 
 #pag_cat {
@@ -67,17 +58,19 @@ ul {
 }
 
 #pag_cat:hover {
-
-    font-size:20px;
-    text-decoration:none;
+    font-size: 20px;
+    text-decoration: none;
     font-weight: bold;
     color: black;
 }
 
 #teste {
-
     text-align: center;
     margin: 0;
     list-style: none;
     width: 500px;
+}
+
+path {
+    stroke-dasharray: 10;
 }
