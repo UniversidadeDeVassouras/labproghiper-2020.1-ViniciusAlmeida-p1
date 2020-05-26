@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width = device-width, initial-scale = 1.0">
@@ -17,8 +18,9 @@
     <link rel="stylesheet" href="{{url_for('static', filename = 'assets/css/index_style.css')}}">
 
 </head>
+
 <body>
-    
+
     <section>
         <div class="container">
             <img src="{{url_for('static', filename = 'assets/img/youmix.jpg')}}">
@@ -30,10 +32,10 @@
             <div class="row">
                 <div class="col-lg-4">
                     <ul id="nav">
-                        <li><a id="pagina_categoria">Categorias</a>  
+                        <li><a id="pagina_categoria">Categorias</a>
                             <ul>
-                                <li><a id="pag_cat" href="{{url_for('games')}}">Jogos</a></li> 
-                                <li><a id="pag_cat" href="{{url_for('culinary')}}">Culinária</a></li> 
+                                <li><a id="pag_cat" href="{{url_for('games')}}">Jogos</a></li>
+                                <li><a id="pag_cat" href="{{url_for('culinary')}}">Culinária</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -42,7 +44,7 @@
                     <h1 style="text-align: center;">Categoria Escolhida: Culinaria</h1>
                     <div class="row justify-content-center">
                         <div class="col-lg-6">
-                                <img width="200px" height="200px" src="{{url_for('static', filename = 'assets/img/youmix.jpg')}}">
+                            <img width="200px" height="200px" src="{{url_for('static', filename = 'assets/img/youmix.jpg')}}">
                         </div>
                         <div class="col-lg-6">
                             <img width="200px" height="200px" src="{{url_for('static', filename = 'assets/img/youmix.jpg')}}">
@@ -55,4 +57,5 @@
     </section>
 
 </body>
+
 </html>

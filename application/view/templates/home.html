@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width = device-width, initial-scale = 1.0">
@@ -17,13 +18,14 @@
     <link rel="stylesheet" href="{{url_for('static', filename = 'assets/css/index_style.css')}}">
 
 </head>
+
 <body>
-    
+
     <section>
         <div class="container">
             <img src="{{url_for('static', filename = 'assets/img/youmix.jpg')}}">
         </div>
-        
+
     </section>
 
     <section style="padding-top: 200px;">
@@ -36,10 +38,10 @@
                 </div>
                 <div class="col-lg-2">
                     <ul id="nav">
-                        <li><a id="categoria">Categorias</a>  
+                        <li><a id="categoria">Categorias</a>
                             <ul>
-                                <li><a id="cat" href="{{url_for('games')}}">Jogos</a></li> 
-                                <li><a id="cat" href="{{url_for('culinary')}}">Culinária</a></li> 
+                                <li><a id="cat" href="{{url_for('games')}}">Jogos</a></li>
+                                <li><a id="cat" href="{{url_for('culinary')}}">Culinária</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -101,4 +103,3 @@
 </body>
 
 </html>
-
