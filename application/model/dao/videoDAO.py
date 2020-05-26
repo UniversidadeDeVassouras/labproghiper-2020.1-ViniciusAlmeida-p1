@@ -9,10 +9,12 @@ class videoDAO:
                 qtd_max_like = video
 
     def add_view (self, video):
-        qtdVisualization += 1
-        video.set_qtdVisualization(qtdVisualization)
+        visualization = video.set_qtdVisualization()
+        visualization += 1
+        video.set_qtdVisualization(visualization)
 
     def add_like (self, video):
+        qtdLikes = video.set_qtdVisualization()
         qtdLikes += 1
-        video.set_qtdLike(qtdLikes)
+        video.set_qtdVisualization(qtdLikes)
 
