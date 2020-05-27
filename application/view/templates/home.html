@@ -36,16 +36,21 @@
                     <p id="sub_titulo">o maior canal de streaming do brasil</p>
                     <p id="texto_home">escolha sua categoria ao lado</p>
                 </div>
+
                 <div class="col-lg-2">
                     <ul id="nav">
                         <li><a id="categoria">Categorias</a>
+
                             <ul>
-                                <li><a id="cat" href="{{url_for('games')}}">Jogos</a></li>
-                                <li><a id="cat" href="{{url_for('culinary')}}">Culinária</a></li>
+                                {% for categories in category_list %}
+                                <li value="{{url_for('category', category=categories.get_id())}}">{{categories.get_title()}}"><a id="cat" href="{{url_for('category')}}">{{categories.get_title()}}</a></li>
+                                {% endfor %}
                             </ul>
+
                         </li>
                     </ul>
                 </div>
+
             </div>
         </div>
     </section>

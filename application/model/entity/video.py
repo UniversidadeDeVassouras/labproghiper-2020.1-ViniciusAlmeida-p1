@@ -1,10 +1,9 @@
 class Videos:
-    def __init__(title, description, tumb, video, category):
+    def __init__(self, title, description, thumb, video):
         self._title = title
         self._description = description
-        self._tumb = tumb
+        self._thumb = thumb
         self._video = video
-        self._category = category
         self._commentary = []
 
 
@@ -32,13 +31,11 @@ class Videos:
     def get_description (self):
         return self._description 
 
-    def get_tumb (self):
-        return self._tumb
+    def get_thumb (self):
+        return self._thumb
 
     def get_video (self):
         return self._video 
 
-    def get_category (self):
-        return self._category
 
     
