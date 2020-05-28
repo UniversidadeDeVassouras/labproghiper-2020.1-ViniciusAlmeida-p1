@@ -1,53 +1,22 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+{%extends 'base.html'%} {%block body%}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width = device-width, initial-scale = 1.0">
-    <title>
-        Bem vindo a o YouMIX - a maior plataforma de streaming do BRASIL
-    </title>
+<section>
+    <div class="container">
+        <img src="{{url_for('static', filename = 'assets/img/youmix.jpg')}}">
+    </div>
+</section>
 
-
-
-
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="{{url_for('static', filename = 'assets/css/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename = 'assets/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename = 'assets/css/index_style.css')}}">
-
-</head>
-
-<body>
-
-    <section>
-        <div class="container">
-            <img src="{{url_for('static', filename = 'assets/img/youmix.jpg')}}">
-        </div>
-    </section>
-
-    <section class="container">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <ul id="nav">
-                        <li><a id="pagina_categoria">Categorias</a>
-                            <ul>
-                                <li><a id="pag_cat" href="{{url_for('games')}}">Jogos</a></li>
-                                <li><a id="pag_cat" href="{{url_for('culinary')}}">Culinária</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-8">
-                    <h1 style="text-align: center;">Categoria Escolhida</h1>
-                </div>
-
+<section class="container">
+    <div class="container">
+        <div class="row">
+            {%include 'menu_category.html'%} {%block category_menu%} {%endblock%}
+            <div class="col-lg-8">
+                <h1 style="text-align: center;">Categoria Escolhida: {{category.get_title()}}</h1>
             </div>
+
         </div>
-    </section>
+    </div>
+</section>
 
-</body>
 
-</html>
+{%endblock%}
