@@ -1,19 +1,23 @@
 {%extends 'base.html'%} {%block body%}
 
-<section>
-    <div class="container">
-        <img src="{{url_for('static', filename = 'assets/img/youmix.jpg')}}">
-    </div>
-</section>
 
 <section class="container">
     <div class="container">
-        <div class="row">
-            {%include 'menu_category.html'%} {%block category_menu%} {%endblock%}
+        <div class="row justify-content-center">
             <div class="col-lg-8">
-                <h1 style="text-align: center;">Categoria Escolhida: {{category.get_title()}}</h1>
+                <div class="row">
+                    <h1 style="text-align: center;">Categoria Escolhida: {{category.get_title()}}</h1>
+                    <br>
+                </div>
+
+                <div class="row">
+                    {%for i in category.get_video_list()%}
+                    <img style="margin: auto;" width="320" height="240" src="/static/{{i.get_thumb()}}"> {%endfor%}
+                </div>
             </div>
 
+
+            {%include 'menu_category.html'%} {%block category_menu%} {%endblock%}
         </div>
     </div>
 </section>

@@ -1,10 +1,11 @@
 class Videos:
-    def __init__(self, title, description, thumb, video):
+    def __init__(self, id, title, description, thumb, file_video):
         self._title = title
         self._description = description
         self._thumb = thumb
-        self._video = video
+        self._file_video = file_video
         self._commentary = []
+        self._id = id
 
 
     def set_commentary (self, commentary):
@@ -34,8 +35,12 @@ class Videos:
     def get_thumb (self):
         return self._thumb
 
-    def get_video (self):
-        return self._video 
+    def get_file_video (self):
+        return self._file_video
+
+    def get_id (self):
+        return self._id
+    
 
 
     

@@ -4,8 +4,8 @@ from application.model.entity.categories import Category
 
 class CategoryDAO:
     def __init__ (self):
-        video_list_1 = Videos(1, "Title", "Description", "{{url_for('static','filename = 'assets/img/test.mp4')}}")
-        video_list_2 = Videos(2, "Title", "Description", "{{url_for('static','filename = 'assets/img/test.mp4')}}")
+        video_list_1 = Videos(1, "Title", "Description", "/assets/img/testejogos.jpg", "{{url_for('static','filename = 'assets/img/test.mp4')}}")
+        video_list_2 = Videos(2, "Title", "Description", "/assets/img/testeculinaria.jpg", "{{url_for('static','filename = 'assets/img/test.mp4')}}")
         self._category_list = []
         self._category_list.append(Category(1, "Jogos", " Jogos", [video_list_1]))
         self._category_list.append(Category(2, "Culinária", "Culinaria", [video_list_2]))
