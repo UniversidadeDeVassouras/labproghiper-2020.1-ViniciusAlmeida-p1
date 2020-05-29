@@ -11,3 +11,8 @@ def home():
     category_list = category_dao.category_list_categorie()
     return render_template("home.html", category_list = category_list)
 
+
+@app.route ("/videotest")
+def video():
+    return render_template("video.html")
+
