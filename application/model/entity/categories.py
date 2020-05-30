@@ -1,3 +1,6 @@
+from flask import current_app
+
+
 class Category:
     def __init__ (self, id, description, title, video_list):
         self._id = id
@@ -20,6 +23,18 @@ class Category:
 
     def get_video_list (self):
         return self._video_list
+
+    def get_video_category_id (self, video_id, list_video_by_category):
+        videos = current_app.config ['videos']
+        videos_category = []
+        for i, video in enumerate (videos.get_videos()):
+            if video.get_video_category_id() == self.get_id():
+                videos_category.append (video)
+        return videos_category
+    
+
+
+
 
 
     

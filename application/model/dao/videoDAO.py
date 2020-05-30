@@ -1,20 +1,12 @@
+from application.model.entity.video import Videos
+from application.model.entity.comments import Commentary
+from application.model.entity.categories import Category
+
 class videoDAO:
    def __init__(self):
        self._list_video = []
+       self._list_video.append (Videos(1, "Title", "Description", "/assets/img/testejogos.jpg", "/assets/img/test.mp4"))
+       self._list_video.append (Videos(2, "Title", "Description", "/assets/img/testeculinaria.jpg", "/assets/img/test.mp4"))
 
-    def qtd_max_like (self):
-        qtd_max_like = self._list_video [0]
-        for video in self._list_video:
-            if self._qtd_max_like.get_qtdLike > video.get_qtdLike():
-                qtd_max_like = video
-
-    def add_view (self, video):
-        visualization = video.set_qtdVisualization()
-        visualization += 1
-        video.set_qtdVisualization(visualization)
-
-    def add_like (self, video):
-        qtdLikes = video.set_qtdVisualization()
-        qtdLikes += 1
-        video.set_qtdVisualization(qtdLikes)
-
+    def get_videos(self):
+        return self._list_video

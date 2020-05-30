@@ -1,11 +1,13 @@
 class Videos:
-    def __init__(self, id, title, description, thumb, file_video):
+    def __init__(self, id, title, description, thumb, file_video, category_id):
         self._title = title
         self._description = description
         self._thumb = thumb
         self._file_video = file_video
         self._commentary = []
         self._id = id
+        self._qtdLike = 0
+        self._category_id = category_id
 
 
     def set_commentary (self, commentary):
@@ -20,7 +22,7 @@ class Videos:
     def get_commentary (self):
         return self._commentary
     
-    def get_qtdLike (self):
+    def get_qtdlike (self):
         return self._qtdLike
 
     def get_qtdVisualization (self):
@@ -41,6 +43,7 @@ class Videos:
     def get_id (self):
         return self._id
     
-
+    def get_category_id (self):
+        return self._category_id
 
     
