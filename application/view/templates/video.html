@@ -3,11 +3,11 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8">
-            <video width="70%" height="50%" controls src="{{url_for('static', filename = 'assets/img/test.mp4')}}">
+            <video width="70%" height="50%" controls src="/static/{{video.get_file_video()}}">
             </video>
-            <a href="" class="btn btn-primary">
+            <button class="btn btn-primary" id="like">
                 <i class="fa fa-thumbs-up"></i>
-            </a>
+            </button>
 
         </div>
         <div id="formulario" class="col lg-4">
@@ -34,5 +34,21 @@
         </div>
     </div>
 </div>
+
+<script>
+    var btnLike = $("#like")
+    btnLike.click(function() {
+        $.ajax({
+            url: "/video/like",
+            data: {
+                video_id: parseInt("{{video.get_id()}}")
+
+            },
+            method: "POST"
+        }).done(function(data) {
+            console.log(data)
+        })
+    })
+</script>
 
 {%endblock%}
