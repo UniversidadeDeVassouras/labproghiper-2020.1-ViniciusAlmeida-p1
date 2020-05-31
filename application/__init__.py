@@ -1,9 +1,8 @@
 from flask import Flask 
 import os
 from application.model.dao.categoryDAO import CategoryDAO
-from application.model.dao.videoDAO import videoDAO
+from application.model.dao.videoDAO import VideoDAO
 from application.model.dao.commentsDAO import CommentaryDAO
-
 
 template_folder = os.path.abspath("application/view/templates")
 static_folder = os.path.abspath("application/view/static")

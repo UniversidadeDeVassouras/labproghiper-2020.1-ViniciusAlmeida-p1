@@ -1,3 +1,5 @@
+from flask import current_app
+
 class Commentary:
     def __init__ (self, content, author, video_id):
         self._content = content

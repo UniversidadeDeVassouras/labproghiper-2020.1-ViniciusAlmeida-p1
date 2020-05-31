@@ -1,3 +1,5 @@
+from flask import current_app
+
 class Videos:
     def __init__(self, id, title, description, thumb, file_video, category_id):
         self._title = title
@@ -7,6 +9,7 @@ class Videos:
         self._commentary = []
         self._id = id
         self._qtdLike = 0
+        self._qtdVisualization = 0
         self._category_id = category_id
 
 

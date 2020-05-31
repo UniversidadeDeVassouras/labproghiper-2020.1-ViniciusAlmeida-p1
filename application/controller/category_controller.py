@@ -2,6 +2,8 @@ from application import app
 from application.model.dao.categoryDAO import CategoryDAO
 from application.model.entity.categories import Category
 from flask import render_template, request
+from application.model.dao.videoDAO import VideoDAO
+from application.model.entity.video import Videos
 
 
 @app.route("/category/<int:category_id>")
