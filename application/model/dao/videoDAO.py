@@ -8,8 +8,10 @@ from application.model.entity.comments import Commentary
 class VideoDAO:
     def __init__(self):
        self._list_video = []
-       self._list_video.append (Videos(1, "TESTE JOGOS", "DESCRIÇÃO JOGOS", "/assets/img/testejogos.jpg", "/assets/img/test.mp4", 1))
-       self._list_video.append (Videos(2, "TESTE CULINARIA", "DESCRIÇÃO CULINARIA", "/assets/img/testeculinaria.jpg", "/assets/img/test.mp4", 1))
+       self._list_video.append (Videos(1, "Barbarian CoC", "Ataque de Barbaros no Clash of Clans", "/assets/img/barbarian.png", "/assets/img/barbarianvideo.mp4", 1))
+       self._list_video.append (Videos(2, "Archer Cosplay", "Cosplay Archer de CoC Real Life", "/assets/img/archer.png", "/assets/img/archervideo.mp4", 1))
+       self._list_video.append (Videos(3, "Comida Japonesa", "Aprensentando Rodizio Comida Japonesa", "/assets/img/chefe.png", "/assets/img/comidajaponesa.mp4", 2))
+       self._list_video.append (Videos(4, "Receita Macarronada", "Receita de macarrao á carbonara", "/assets/img/chefe01.png", "/assets/img/receitamacarrao.mp4", 2))
        
     def get_list_video(self):
         return self._list_video
@@ -20,5 +22,10 @@ class VideoDAO:
             if video.get_id() == int(video_id):
                 find_video = video
         return find_video
+
+    def get_video_mais_curtidos (self):
+        video = current_app.config ['videos']
+        video_mais_curtido = sorted(video.get_list_video(), key=lambda i: i.get_qtdlike(), reverse=True)
+        return video_mais_curtido
 
 

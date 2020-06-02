@@ -6,24 +6,16 @@ class Videos:
         self._description = description
         self._thumb = thumb
         self._file_video = file_video
-        self._commentary = []
         self._id = id
         self._qtdLike = 0
         self._qtdVisualization = 0
         self._category_id = category_id
-
-
-    def set_commentary (self, commentary):
-        self._commentary.append (commentary)
 
     def set_qtdLike (self, qtdLike):
         self._qtdLike = qtdLike
     
     def set_qtdVisualization (self, qtdVisualization):
         self._qtdVisualization = qtdVisualization
-
-    def get_commentary (self):
-        return self._commentary
     
     def get_qtdlike (self):
         return self._qtdLike
