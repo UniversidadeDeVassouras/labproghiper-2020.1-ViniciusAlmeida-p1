@@ -16,14 +16,30 @@ def like ():
         return str(e)
     
 
+@app.route ("/video/commentary", methods = ['POST'])
+def comment ():
+    try:
+        comments = current_app.config ['comments']
+        video = current_app.config ['videos']
+        comment = Commentary(request.form['comments'], int(request.form['id_video']))
+
+        comments.add_commentary(comment)
+        print (comments)
+
+        return jsonify (comment.__dict__)
+    except Exception as e:
+        return str(e)
+        
 
 @app.route ("/category/<int:category_id>/video/<int:video_id>")
 def video (category_id, video_id):
     videos = current_app.config ['videos']
     categories = current_app.config ['categories']
+    commentary = current_app.config ['comments']
+    commentary_video = commentary.get_commentary_video(video_id)
     category = categories.search(category_id)
     video = videos.get_video_by_id(video_id)
     video.set_qtdVisualization (video.get_qtdVisualization() +1)
-    return render_template ("video.html", video = video)
+    return render_template ("video.html", video = video, commentary = commentary_video)
 
 
