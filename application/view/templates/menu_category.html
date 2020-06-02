@@ -1,15 +1,21 @@
 {%block category_menu%}
 <div class="col-lg-2">
-    <ul id="nav">
-        <li><a id="categoria">Categorias</a>
-
+    <div class="wrapper">
+        <nav class="vertical">
             <ul>
-                {% for categories in category_list %}
-                <li><a id="cat" href="/category/{{categories.get_id()}}">{{categories.get_title()}}</a></li>
-                {% endfor %}
-            </ul>
+                <li>
+                    <a href="#">Categorias</a>
+                    <div>
+                        <ul>
+                            {% for categories in category_list %}
+                            <li><a href="/category/{{categories.get_id()}}">{{categories.get_title()}}</a></li>
+                            {% endfor %}
 
-        </li>
-    </ul>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </div>
 {%endblock%}

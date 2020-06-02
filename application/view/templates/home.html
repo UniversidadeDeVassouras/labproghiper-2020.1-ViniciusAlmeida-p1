@@ -3,9 +3,9 @@
 
 
 <section style="padding-top: 200px;">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-10">
+    <div class="container" style="margin: auto; padding: 0;">
+        <div class="row" style="margin: auto;">
+            <div class="col-lg-8" style="margin: auto;">
                 <p id="titulo">BEM VINDO AO YOUMIX</p>
                 <p id="sub_titulo">o maior canal de streaming do brasil</p>
                 <p id="texto_home">escolha sua categoria ao lado</p>
@@ -13,6 +13,55 @@
 
             {%include 'menu_category.html'%} {%block category_menu%} {%endblock%}
 
+        </div>
+    </div>
+    <div class="container" style="margin: auto; padding: 0;">
+        <div class="wrapper" id="cat_escolhida" style="margin: auto; width: 500px!important;">
+            <nav class="vertical">
+                <ul>
+                    <li>
+                        <a>Destaques</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="row justify-content-center">
+            {%for video in videos_curtidos %}
+            <div class="col-lg-4">
+                <div class="wrapper">
+                    <div class="clash-card barbarian">
+                        <div class="clash-card__image clash-card__image--barbarian">
+                            <img src="/static/{{video.get_thumb()}}" alt="barbarian" />
+                        </div>
+                        <div class="clash-card__unit-name">{{video.get_title()}}</div>
+                        <div class="clash-card__unit-description">
+                            {{video.get_description()}}
+                        </div>
+                        <div class="view_video_stats view_video">
+                            <a href="/category/{{video.get_category_id()}}/video/{{video.get_id()}}"><button class="btn btn-warning">Assistir Video</button>
+                                    </a>
+                        </div>
+                        <div class="row clash-card__unit-stats clash-card__unit-stats--barbarian">
+                            <div class="col-lg-6">
+                                <div class="">
+                                    <div class="stat">{{video.get_qtdlike()}}</div>
+                                    <div class="stat-value">Curtidas</div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="">
+                                    <div class="stat">{{video.get_qtdVisualization()}}</div>
+                                    <div class="stat-value">Visualizações</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- end clash-card barbarian-->
+            </div>
+            {%endfor%}
         </div>
     </div>
 </section>
