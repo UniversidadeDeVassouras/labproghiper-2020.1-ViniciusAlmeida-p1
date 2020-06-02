@@ -14,7 +14,6 @@ def home():
     category_list = category_dao.category_list_categorie()
     videos_mais_curtidos = videos.get_video_mais_curtidos()
     
-    
     return render_template("home.html", category_list = category_list, videos_curtidos = videos_mais_curtidos)
 
 

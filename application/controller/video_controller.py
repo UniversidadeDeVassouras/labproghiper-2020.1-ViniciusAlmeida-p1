@@ -40,6 +40,6 @@ def video (category_id, video_id):
     category = categories.search(category_id)
     video = videos.get_video_by_id(video_id)
     video.set_qtdVisualization (video.get_qtdVisualization() +1)
-    return render_template ("video.html", video = video, commentary = commentary_video)
+    return render_template ("video.html", video = video, commentary = commentary_video, categories = category)
 
 

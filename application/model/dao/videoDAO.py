@@ -11,7 +11,7 @@ class VideoDAO:
        self._list_video.append (Videos(1, "Barbarian CoC", "Ataque de Barbaros no Clash of Clans", "/assets/img/barbarian.png", "/assets/img/barbarianvideo.mp4", 1))
        self._list_video.append (Videos(2, "Archer Cosplay", "Cosplay Archer de CoC Real Life", "/assets/img/archer.png", "/assets/img/archervideo.mp4", 1))
        self._list_video.append (Videos(3, "Comida Japonesa", "Aprensentando Rodizio Comida Japonesa", "/assets/img/chefe.png", "/assets/img/comidajaponesa.mp4", 2))
-       self._list_video.append (Videos(4, "Receita Macarronada", "Receita de macarrao á carbonara", "/assets/img/chefe01.png", "/assets/img/receitamacarrao.mp4", 2))
+       self._list_video.append (Videos(4, "Macarronada", "Receita de macarrao á carbonara", "/assets/img/chefe01.png", "/assets/img/receitamacarrao.mp4", 2))
        
     def get_list_video(self):
         return self._list_video
