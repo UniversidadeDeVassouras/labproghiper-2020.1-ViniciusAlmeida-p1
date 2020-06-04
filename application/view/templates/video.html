@@ -72,46 +72,35 @@
 </div>
 
 <script>
-    var btnLike = $("#like")
-    btnLike.click(function() {
-        $.ajax({
-            url: "/video/like",
-            data: {
-                video_id: parseInt("{{video.get_id()}}")
+    var btnLike = document.getElementById('like');
 
-            },
-            method: "POST"
-        }).done(function(data) {
-            console.log(data)
-        })
-    })
-</script>
-<script>
-    document.getElementById('like').onclick = function() {
+    btnLike.onclick = function() {
+        btnLike.disabled = true;
+        var likeValue = document.getElementById('following');
+        console.log(parseInt(likeValue.textContent));
+
+        likeValue.innerHTML = parseInt(likeValue.textContent) + 1;
 
         swal("Você Curtiu!", "Obrigado por curtir nosso video!", "success");
+        var xmlhttp = new XMLHttpRequest();
+        var video_id = parseInt(`{{video.get_id()}}`);
+        xmlhttp.open("GET", "/video/like?like=" + video_id + "", true);
+        xmlhttp.send();
+        console.log(video_id)
+
     }
 </script>
 <script>
-    var commentary = $('#send_comment')
-    commentary.click(function() {
-        $.ajax({
-            url: "/video/commentary",
-            data: {
-                id_video: '{{video.get_id()}}',
-                comments: $("textarea#comment").val()
-            },
-            method: "POST"
-        }).done(function(data) {
-            if ($('#comment').val() == '') {
-                swal({
-                    icon: 'error',
-                    title: 'Poxa',
-                    text: 'Você esqueceu de escrever um comentario :(!',
-                })
-            } else {
-                console.log(data)
-                $('#comments:first').prepend(`
+    btnComment = document.getElementById('send_comment');
+
+    btnComment.onclick = function() {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            console.log(this.response)
+            if (this.readyState == 4 && this.status == 200) {
+                data = this.response;
+                data = JSON.parse(data)
+                $('#comments').prepend(`
                 <li>
                     <div class='comment-main-level'>
                         <div class='comment-avatar'><img src='/static/assets/img/user.png' alt=''></div>
@@ -130,8 +119,12 @@
             `)
                 $("textarea#comment").val('')
             }
-        });
-    });
-</script>
 
+        }
+        var video_id = parseInt(`{{video.get_id()}}`);
+        var comment = $("textarea#comment").val()
+        xmlhttp.open("GET", "/video/commentary?commentary=" + comment + "&video_id=" + video_id + "", true);
+        xmlhttp.send();
+    };
+</script>
 {%endblock%}

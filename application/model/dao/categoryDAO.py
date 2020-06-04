@@ -5,7 +5,7 @@ from application.model.dao.videoDAO import VideoDAO
 
 class CategoryDAO:
     def __init__ (self):
-
+        
         self._category_list = []
         self._category_list.append(Category(1, "Jogos"))
         self._category_list.append(Category(2, "Culinaria"))
