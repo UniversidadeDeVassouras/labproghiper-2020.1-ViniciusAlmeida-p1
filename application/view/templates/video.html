@@ -1,6 +1,16 @@
 {%extends 'base.html'%} {%block body%}
 
 <div class="container" style="padding-top: 100px;">
+    <a href="/category/{{categories.get_id()}}">
+        <div class="button-container" style="padding-bottom: 30px;">
+
+            <div class="button-flipper">
+                <button class="front-button">Voltar</button>
+                <button class="back-button">Para Categoria</button>
+            </div>
+
+        </div>
+    </a>
     <div class="row">
         <div class="col-lg-8">
             <div class="embed-responsive embed-responsive-16by9">
@@ -9,15 +19,40 @@
             <div id="wrapper">
                 <div id="profiAle">
                     <div id="body">
-                        <button class="btn btn-primary" id="like">
-                            <i class="fa fa-thumbs-up"> Curtir</i>
-                        </button>
-                        <div id="account">
-                            <div id="username">{{video.get_title()}}</div>
-                            <div id="handle">Categoria: {{categories.get_title()}}</div>
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div id="account">
+                                    <div id="username">{{video.get_title()}}</div>
+                                    <div id="handle">Categoria: {{categories.get_title()}}</div>
+                                </div>
+                                <div id="bio">{{video.get_description()}}</div>
+                            </div>
+                            <div class="col-lg-2">
+                                <button class="btn btn-primary" id="like">
+                                    <i class="fa fa-thumbs-up"> Curtir</i>
+                                </button>
+                            </div>
+                            <div class="col-lg-2">
+                                <a class="share-button js-share-button" style="margin: auto;" href="#"><i style="float: left; font-size: 33px;" class="fa fa-share icon" aria-hidden="true"></i></a>
+                                <div class="share-modal share-modal--close">
+                                    <div style="text-align: center;" class="share-body">
+                                        <a class="share-modal__close" href="#" id="closeModalButton">
+                                            <i class="fa fa-close icon" aria-hidden="true"></i>
+                                        </a>
+                                        <p class="share-modal__title">
+                                            <i class="fa fa-share icon" aria-hidden="true"></i>
+                                            <span>COMPARTILHE SEU VIDEO!</span>
+                                        </p>
+                                        <p class="share-modal__post-title">{{video.get_title()}}</p>
+                                        <img class="share-modal__post-title" style="width: 250px; height:200px; text-align: center;" src="/static/{{video.get_thumb()}}" />
+                                        <p class="share-modal__post-title">{{video.get_description()}}</p>
+                                        <p class="share-modal__post-title share-modal__post-title--small">Copie seu link de compartilhamento</p>
+                                        <input type="text" readonly="" class="share-modal__link-box" id="share" onClick="this.select();">
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
                         </div>
-                        <div id="bio">{{video.get_description()}}</div>
-                        <br>
                         <ul id="classvideo">
                             <li id="cardvideo"><span class="label">Views</span><span id="tweets">{{video.get_qtdVisualization()}}</span></li>
                             <li id="cardvideo"><span class="label">Likes</span><span id="following">{{video.get_qtdlike()}}</span></li>
@@ -70,6 +105,39 @@
         </div>
     </div>
 </div>
+
+<script>
+    var url = document.location.href;
+    var input_share = document.querySelector('#share');
+
+    input_share.value = url;
+</script>
+
+<script>
+    var $shareModal = $('.share-modal');
+
+    var toggleModal = function() {
+        $shareModal.toggleClass('share-modal--open');
+        $shareModal.toggleClass('share-modal--close');
+    }
+
+    $('.js-share-button').on('click', function(e) {
+        e.preventDefault();
+        toggleModal();
+    });
+
+    $(document).keyup(function(e) {
+        if (e.keyCode === 27 && $shareModal.hasClass('share-modal--open')) {
+            $shareModal.removeClass('share-modal--open');
+            $shareModal.addClass('share-modal--close');
+        }
+    });
+
+    $('#closeModalButton').on('click', function(e) {
+        e.preventDefault();
+        toggleModal();
+    });
+</script>
 
 <script>
     var btnLike = document.getElementById('like');
