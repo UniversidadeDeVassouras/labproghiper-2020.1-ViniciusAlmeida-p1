@@ -1,7 +1,7 @@
 from flask import current_app
 
 class Videos:
-    def __init__(self, id, title, description, thumb, file_video, category_id):
+    def __init__(self, id, title, description, thumb, file_video, category_id, date_publish):
         self._title = title
         self._description = description
         self._thumb = thumb
@@ -10,6 +10,7 @@ class Videos:
         self._qtdLike = 0
         self._qtdVisualization = 0
         self._category_id = category_id
+        self._date_publish = date_publish
 
     def set_qtdLike (self, qtdLike):
         self._qtdLike = qtdLike
@@ -41,4 +42,6 @@ class Videos:
     def get_category_id (self):
         return self._category_id
 
+    def get_date_publish (self):
+        return self._date_publish
     
