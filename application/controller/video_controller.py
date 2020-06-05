@@ -15,15 +15,27 @@ def like ():
     except Exception as e:
         return str(e)
     
+@app.route("/video/commentary/delete/")
+def delete():
+    try:
+        comments = current_app.config['comments']
+        delete = comments.delete_commentary_by_id(int(request.args.get('id_comment'))) 
+        if(delete == None):
+            return jsonify(delete)
+        return jsonify(True)
+    except Exception as e:
+        return str(e)
+
+
 
 @app.route ("/video/commentary/", methods = ['GET'])
 def comment ():
     try:
         comments = current_app.config ['comments']
-        comment = Commentary(request.values.get('commentary'), int(request.values.get('video_id')))
+        comments.set_generate_id (comments.get_generate_id() +1 )
+        comment = Commentary(comments.get_generate_id(), request.values.get('commentary'), int(request.values.get('video_id')))
 
         comments.add_commentary(comment)
-        print (comments)
 
         return jsonify (comment.__dict__)
     except Exception as e:
@@ -39,7 +51,6 @@ def video (category_id, video_id):
     category = categories.search(category_id)
     video = videos.get_video_by_id(video_id)
     video.set_qtdVisualization (video.get_qtdVisualization() +1)
-    print (video.__dict__)
     return render_template ("video.html", video = video, commentary = commentary_video, categories = category)
 
 
