@@ -12,7 +12,6 @@
     <div id='overlay' class='fade-in'></div>
 </div>
 
-
 <div class="container" style="margin: auto; padding: 0; padding-top: 100px;">
     <div class="row" style="margin: auto;">
         <div class="col-lg-10" style="margin: auto;">
@@ -99,6 +98,75 @@
         });
         document.getElementById('back-to-top').classList.remove("slideIn");
     }
+</script>
+
+<script>
+    function openSearch() {
+        document.getElementById('search-modal').style.display = "block";
+    }
+    // fungsi untuk menutup modal search
+    function closeModal() {
+        document.getElementById('search-modal').style.display = "none";
+    }
+</script>
+
+<script>
+    document.addEventListener("touchstart", function() {}, true);
+</script>
+
+
+<script>
+    var searchInput = document.querySelector('#s');
+    var searchResult = document.querySelector('.search-result');
+
+    var searchTimeOut;
+
+    $('#s').keyup(function() {
+        clearTimeout(searchTimeOut);
+
+        searchTimeOut = setTimeout(() => {
+            var inputValue = searchInput.value;
+
+            if (inputValue) {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                    if (xmlhttp.readyState === 4) {
+                        var videos = JSON.parse(xmlhttp.response);
+                        var result = '';
+
+                        if (videos.length) {
+                            $('.search-input').addClass('b-radius');
+                            $('.search-submit').addClass('b-radius2');
+                            $('.search-result').addClass('d-block');
+
+                            videos.forEach(video => {
+                                result += `
+                                    <div>
+                                    <p>
+                                        <a href="/player/${video._id}"><img class="avatar" src="/static/img/${video._tumbnail_video}" alt="${video._title}">
+                                        ${video._title} - ${video._sub_title}
+                                        </a>
+                                    </p>
+                                    </div>
+                                `;
+                            });
+                        } else {
+                            alert('nada');
+                        }
+
+                        $('.search-result').html(result);
+
+                    }
+                }
+                xmlhttp.open("GET", `/player/search?search=${inputValue}`, true);
+                xmlhttp.send();
+            } else {
+                $('.search-input').removeClass('b-radius');
+                $('.search-submit').removeClass('b-radius2');
+                $('.search-result').removeClass('d-block');
+            }
+        }, 500);
+    });
 </script>
 
 {%endblock%}

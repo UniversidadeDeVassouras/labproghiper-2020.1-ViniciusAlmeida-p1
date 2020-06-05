@@ -23,6 +23,7 @@
                             <div class="col-lg-8">
                                 <div id="account">
                                     <div id="username">{{video.get_title()}}</div>
+                                    <div id="handle">Data Publicação: {{video.get_date_publish()}}</div>
                                     <div id="handle">Categoria: {{categories.get_title()}}</div>
                                 </div>
                                 <div id="bio">{{video.get_description()}}</div>
@@ -111,9 +112,7 @@
     var input_share = document.querySelector('#share');
 
     input_share.value = url;
-</script>
 
-<script>
     var $shareModal = $('.share-modal');
 
     var toggleModal = function() {
@@ -137,9 +136,7 @@
         e.preventDefault();
         toggleModal();
     });
-</script>
 
-<script>
     var btnLike = document.getElementById('like');
 
     btnLike.onclick = function() {
@@ -149,16 +146,15 @@
 
         likeValue.innerHTML = parseInt(likeValue.textContent) + 1;
 
-        swal("Você Curtiu!", "Obrigado por curtir nosso video!", "success");
         var xmlhttp = new XMLHttpRequest();
         var video_id = parseInt(`{{video.get_id()}}`);
         xmlhttp.open("GET", "/video/like?like=" + video_id + "", true);
         xmlhttp.send();
         console.log(video_id)
-
+        swal("Você Curtiu!", "Obrigado por curtir nosso video!", "success");
     }
-</script>
-<script>
+
+
     btnComment = document.getElementById('send_comment');
 
     btnComment.onclick = function() {
@@ -169,7 +165,7 @@
                 data = this.response;
                 data = JSON.parse(data)
                 $('#comments').prepend(`
-                <li>
+                <li id="id_comment-` + data._id + `">
                     <div class='comment-main-level'>
                         <div class='comment-avatar'><img src='/static/assets/img/user.png' alt=''></div>
                         <div class='comment-box'>
@@ -177,6 +173,7 @@
                                 <h6 class='comment-name'><a>Vinicius Almeida</a></h6>
                                 <i class='fa fa-reply'></i>
                                 <i class='fa fa-heart'></i>
+                                <i class='fa fa-trash' onclick="delete_commentary( ` + data._id + ` )"></i>
                             </div>
                             <div class='comment-content' id='comments'>
                                 ${data._content}
@@ -194,5 +191,26 @@
         xmlhttp.open("GET", "/video/commentary?commentary=" + comment + "&video_id=" + video_id + "", true);
         xmlhttp.send();
     };
+
+    var delete_commentary = function(comment_id) {
+        console.log('fodase')
+        var btn_comment = document.getElementById('send_comment')
+        var comment = document.getElementById('comments')
+        var xmlhttp = new XMLHttpRequest();
+
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log(this.response)
+                data = this.response;
+                data = JSON.parse(data)
+                if (data === true) {
+                    document.getElementById('id_comment-' + comment_id).remove();
+                }
+            }
+        }
+        xmlhttp.open("GET", "/video/commentary/delete/?id_video={{video.get_id()}}&id_comment=" + comment_id, true);
+        console.log(comment_id)
+        xmlhttp.send();
+    }
 </script>
 {%endblock%}
